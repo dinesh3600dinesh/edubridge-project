@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title >Ukart</title>
+    <style>
+       
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            /*background-color: #f4f4f4;*/
+            overflow-x: hidden; /* Prevent horizontal scroll on smaller screens */
+            background-image: url("\assets\images\images.jpg");
+        }
+
+        header {
+            color: #ffffff;
+            background-color: #333; 
+           
+            padding: 3px;
+            text-align: left;
+        }
+
+        nav {
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px;
+            margin: 0 10px;
+            font-size: 20px;
+        }
+
+        nav a:hover {
+            background-color: #777;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .parallax {
+            background-image: url('assets/images/images.jpg');
+            background-size: cover;
+            background-attachment: fixed; /* Parallax effect */
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .parallax h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .login-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-buttons button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 25px;
+            margin: 0 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+
+        }
+
+        .login-buttons button:hover {
+            background-color: #555;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:center;
+            padding: 10px;
+        }
+
+        .product-card {
+            /*background-color: #fff;*/
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            width: 300px;
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        h1{
+            color:rgb(255, 255, 255);
+            text-shadow: #f4f4f4;
+            
+        }
+        h3{
+            font-size:20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 color:white>Ukart &#10084;</h1>
+    </header>
+    <nav>
+        <a href="#">Home</a>
+       
+        <a href="#about-container">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="parallax">
+        
+        <div class="login-buttons">
+            <button   [routerLink]="['/customer/login']">Customer Login</button>
+            <button [routerLink]="['/admin/login']">Admin Login</button>
+            
+        </div>
+    </div>
+    <div class="product-container">
+        <!-- Product cards will go here -->
+        <div class="product-card">
+            <img src="assets/images/product6.jpeg" alt="Handwoven Product 1">
+            <h3><strong>Men's Wear</strong></h3>
+            
+            
+        </div>
+        <div class="product-card">
+            <img src="\assets\images\product2.jpg" alt="Handwoven Product 2">
+            <h3><strong> Women's Wear</strong></h3>
+            
+        </div>
+        <!-- Add more product cards as needed -->
+    </div>
+
+    <div class="about-section" id ="about-container">
+        <div class="about-container">
+          <h1>About Us</h1>
+          <p><br>
+            <p class="special-line">
+                <span class="large-text">Know our Website!!</span>
+<p>
+    At Ukart, we're passionate about providing you with an exceptional online shopping experience. Our team is dedicated to curating a diverse selection of high-quality products, ensuring that you find exactly what you need, whether it's the latest tech gadgets, trendy fashion items, or everyday essentials.
+
+Founded in 2023, Ukart has quickly grown from a small startup to a trusted destination for shoppers worldwide. We prioritize customer satisfaction above all else, striving to exceed your expectations with every purchase.</p>
+          
+
+        </div>
+      </div>
+    
+
+    <hr class="separator-line">
+
+<div class="contact-section" id="contact">
+  <p>Contact Us:</p>
+  <p>Email:  Ukart&#64;gmail.com </p>
+  <p>Phone:  +91 1234567890 </p>
+</div>
+<br>
+<br>
+<br>
+<footer>
+    <p>&copy; 2023 Ukart. All rights reserved.</p>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<mat-toolbar color="white" class="mat-elevation-z8">
+    <span><mat-icon>eco</mat-icon> Products</span>
+   
+     <div class="spacer"></div>
+    <a mat-button routerLink="/customer/home">Home</a>
+    <a mat-button routerLink="/customer/myprofile">My Profile</a>
+    <a mat-button routerLink="/customer/product">Products</a>
+    <a mat-button routerLink="/customer/myorders">My Orders</a>
+    <a mat-button routerLink="/customer/mypayment">My Payments</a>
+    <a mat-raised-button color="primary" (click)="logout()">Logout</a>
+   </mat-toolbar>
+   <div class="main-content" style="
+   background-image: url('assets/images/productbg.jpg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   padding: 140px">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">  
+                <div class="col-md-9">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-md-6" *ngFor="let tempmenu of product">
+                                <div class="menu-container">
+                                     <img src="{{ tempmenu.img }}" alt="{{ tempmenu.pname }}" class="menu-image"> 
+                                    
+                                    
+                                    
+                                    <h4 class="menu-item">{{ tempmenu.pname }}</h4>
+                                    <p class="menu-price">{{ tempmenu.price }} ₹</p>
+                                    <!-- <p class="product-Id"><strong>productid:{{ tempmenu.productid}} </strong> </p> -->
+                                    <button class="atu-btn-submit" (click)="orderMenu(tempmenu.productid)">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

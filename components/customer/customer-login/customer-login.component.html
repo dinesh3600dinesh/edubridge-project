@@ -1,0 +1,91 @@
+<section class="vh-100" style="background-color: #9A616D;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src="https://img.freepik.com/premium-photo/portrait-young-girl-red-blouse_121162-485.jpg?w=360"
+                alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+
+                <form
+                  form #spForm="ngForm"
+                  (ngSubmit)="Getlogin()"
+                  class="signin-form"
+                  style="padding: 12px; border-radius: 10px; background-color: white;"
+                >
+                  <h1><strong>Login here!!</strong></h1>
+                  <div class="form-group" style="color: black;">
+                    <label style="font-family: cursive" for="username">User Name:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="username"
+                      name="User Name"
+                      [(ngModel)]="customer.username"
+                      placeholder="Enter User Name"
+                      minlength="5"
+                      required
+                      style="margin-bottom: 10px;"
+                    />
+                    <div class="error-message" *ngIf="spForm.controls['User Name'].invalid && (spForm.controls['User Name'].dirty || spForm.controls['User Name'].touched)">
+                      <div *ngIf="spForm.controls['User Name'].errors['required']">User Name is required.</div>
+                      <div *ngIf="spForm.controls['User Name'].errors['minlength']">User Name must contain at least 5 characters.</div>
+                    </div>
+                  </div>
+                  <div class="form-group" style="color: black; margin-bottom: 10px;">
+                    <label style="font-family: cursive" for="password">Password:</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="password"
+                      name="password"
+                      [(ngModel)]="customer.userpassword"
+                      placeholder="Enter password"
+                      minlength="6"
+                      required
+                    />
+                    <div class="error-message" *ngIf="spForm.controls['password'].invalid && (spForm.controls['password'].dirty || spForm.controls['password'].touched)">
+                      <div *ngIf="spForm.controls['password'].errors['required']">Password is required.</div>
+                      <div *ngIf="spForm.controls['password'].errors['minlength']">Password must contain at least 6 characters.</div>
+                    </div>
+                  </div>
+                  <button
+                    type="submit"
+                    class="form-control btn btn-primary submit px-3"
+                    [disabled]="!spForm.valid"
+                    style="background-image: linear-gradient(#333); margin-top: 20px;"
+                  >
+                    Login
+                  </button>
+                  <p class="bottom" style="color: black; font-family: cursive; margin-top: 10px;">
+                    Don't have an account?
+                    <a
+                      class="bottom"
+                      [routerLink]="['/customer/signup']"
+                      style="color: black; text-decoration: none; padding-left: 5px; font-family: cursive"
+                    >
+                      Register here
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      class="bottom"
+                      [routerLink]="['/']"
+                      style="color: rgb(185, 94, 94);"
+                    >
+                      <button style="font-family: cursive" type="button"><strong>Back to Home....</strong></button>
+                    </a>
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

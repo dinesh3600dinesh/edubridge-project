@@ -1,0 +1,81 @@
+<header >
+    <div class="logosec">
+        <div class="logo"></div>
+        
+    </div>
+    <h4 style="margin-left: 70%"></h4>
+    <div class="dp">
+
+        <img src="assets/images/Users.png" class="dpicn" alt="dp">
+
+    </div>
+</header>
+<div class="main-content" style="
+background-image: url('assets/images/addmenubg.jpg');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+padding-top: 10%;">
+<form #spForm="ngForm" (ngSubmit)="onSubmit()" class="menu-form">
+    <div class="form-title"><h1>AddNewProduct</h1></div>
+    
+    <div class="form-group">
+        <label>Product ID</label>
+        <input type="text" name="id" [(ngModel)]="product.productid" required pattern="^[0-9]+$" placeholder="Enter Product ID (digits only)" />
+        <div *ngIf="spForm.controls['id']?.invalid && (spForm.controls['id']?.dirty || spForm.controls['id']?.touched)">
+            <div *ngIf="spForm.controls['id']?.errors?.['required']">
+                Product ID is required.
+            </div>
+            <div *ngIf="spForm.controls['id']?.errors?.['pattern']">
+                Product ID must contain digits only.
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label>Product Name</label>
+        <input type="text" name="fname" [(ngModel)]="product.pname" required minlength="3" pattern="^[a-zA-Z ]+$" placeholder="Enter Product Name (at least 3 letters, no digits)" />
+        <div *ngIf="spForm.controls['fname']?.invalid && (spForm.controls['fname']?.dirty || spForm.controls['fname']?.touched)">
+            <div *ngIf="spForm.controls['fname']?.errors?.['required']">
+                Product Name is required.
+            </div>
+            <div *ngIf="spForm.controls['fname']?.errors?.['minlength']">
+                Product Name must be at least 3 characters long.
+            </div>
+            <div *ngIf="spForm.controls['fname']?.errors?.['pattern']">
+                Product Name must not contain digits.
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label>Price</label>
+        <input type="number" name="price" [(ngModel)]="product.price" required min="1" placeholder="Enter Price (minimum 1)" />
+        <div *ngIf="spForm.controls['price']?.invalid && (spForm.controls['price']?.dirty || spForm.controls['price']?.touched)">
+            <div *ngIf="spForm.controls['price']?.errors?.['required']">
+                Price is required.
+            </div>
+            <div *ngIf="spForm.controls['price']?.errors?.['min']">
+                Price must be at least 1.
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label>Product Image</label>
+        <input type="text" name="img" [(ngModel)]="product.img" required placeholder="Enter Image URL" />
+        <div *ngIf="spForm.controls['img']?.invalid && (spForm.controls['img']?.dirty || spForm.controls['img']?.touched)">
+            <div *ngIf="spForm.controls['img']?.errors?.['required']">
+                Product URL is required.
+            </div>
+        </div>
+        <p class="note">Note: If the image is not visible, please check the image name.</p>
+    </div>
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-info" [disabled]="spForm.invalid">Submit</button>
+        <button type="reset" class="btn btn-info">Reset</button>
+        <button type="button" class="btn btn-info" routerLink="/admin/product">Back</button>
+    </div>
+</form>
+</div>

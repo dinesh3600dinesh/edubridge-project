@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .main-container {
+        background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+    height: 50vh;
+    overflow: hidden;
+
+    }
+
+    .table-container {
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      background-color: rgba(255, 255, 255, 0.8); /* Background color with transparency */
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .table th, .table td {
+      padding: 15px;
+      text-align: center;
+      color: black; /* Set text color to white or another contrasting color */
+    }
+
+    .table thead th {
+      background-color: #343a40;
+    }
+
+    .table tbody tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+
+    .table tbody tr:hover {
+      background-color: #e9ecef;
+    }
+
+    .pagination-container {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
+    
+  </style>
+  <title>Payment Table Design</title>
+</head>
+<body>
+
+  <mat-toolbar color="white" class="mat-elevation-z8" style="margin-bottom: 10px;">
+    <div class="logo">
+      
+         
+     
+    </div>
+    
+    <div class="spacer"></div>
+    <a mat-button style="margin-right: 20px;" routerLink="/customer/home">Home</a>
+    <a mat-button style="margin-right: 15px;" routerLink="/customer/myprofile">My Profile</a>
+    <a mat-button style="margin-right: 15px;" routerLink="/customer/product">Products</a>
+    <a mat-button style="margin-right: 750px;" routerLink="/customer/myorders">My Orders</a>
+   
+    <a mat-raised-button color="primary" (click)="logout()">Logout</a>
+  </mat-toolbar>
+
+  <div class="section-container">
+    <div class="container">
+      <h2 style="color: #333;"class="text-center my-4" >My Payments</h2>
+      <div class="table-container">
+        <table class="table">
+                <tr>
+                  <th class="text-center">Payment Id</th>
+                  <th class="text-center">Order Id</th>
+                  <th class="text-center">Customer Name</th>
+                  <th class="text-center">Order Date</th>
+                  <th class="text-center">Total Amount</th>
+                  <th class="text-center">Paid Amount</th>
+                </tr>
+              
+              <tbody>
+                <tr *ngFor="let temppay of payment | paginate: { itemsPerPage: count, currentPage: p }">
+                  <td class="text-center">{{ temppay.paymentId }}</td>
+                  <td class="text-center">{{ temppay.orderId }}</td>
+                  <td class="text-center">{{ temppay.customer.username }}</td>
+                  <td class="text-center">{{ temppay.paidDate }}</td>
+                  <td class="text-center">{{ temppay.totalPrice }}</td>
+                  <td class="text-center">{{ temppay.paidAmount }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="text-right mt-3">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+        </div>
+     
+   
+  
+

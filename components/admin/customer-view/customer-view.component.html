@@ -1,0 +1,98 @@
+<section style="background-image: url('assets/images/addmenubg.jpg');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+height: 100vh ;
+
+background-attachment: fixed;">
+    <header>
+      
+        <h4 style="margin-left: 70%"></h4>
+        <div class="dp">
+
+            <img src="assets/images/Users.png" class="dpicn" alt="dp">
+
+        </div>
+    </header>
+    <div class="main-container">
+        <div class="navcontainer">
+            <nav class="nav">
+                <div class="nav-upper-options">
+                    <div class="nav-option option1">
+                        <a routerLink="/admin/home">
+                            
+                            <h3 style="margin-left: 20px">Dashboard</h3>
+                        </a>
+                    </div>
+                    
+                    <div class="nav-option option3">
+                        <a routerLink="/admin/order/allorders">
+                            
+                            <h3 style="margin-left: 20px">Show Order</h3>
+                        </a>
+                    </div>
+                    <div class="nav-option option4">
+                        <a routerLink="/admin/payment/allpayment">
+                            
+                            <h3 style="margin-left: 30px">Show Payments</h3>
+                        </a>
+                    </div>
+                    <div class="nav-option option5">
+                        <a routerLink="/admin/product">
+                            
+                            <h3 style="margin-left: 20px">Show Product</h3>
+                        </a>
+                    </div>
+                    <div class="nav-option option6">
+                        <a (click)="logout()">
+                            <img src="assets/images/logout.png" class="nav-img" alt="institution">
+                            <h3 style="margin-left: 20px">Logout</h3>
+                        </a>
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+        <div class="main">
+            <div class="title-container">
+                <h3 style="font-family: cursive">All Customers</h3>
+            </div>
+            <div class="box-container">
+
+                <div class="section-content section-content-p30 ">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <table  class='table table-curved'>
+                                <thead>
+                                    <tr class='table-dark'>
+                                        <th style="font-family: cursive">ID</th>
+                                        <th style="font-family: cursive">Name</th>
+                                        <th style="font-family: cursive">PhNo.</th>
+                                        <th style="font-family: cursive">Username</th>
+                                        <th></th>
+                                    </tr>
+
+                                </thead>
+                                <tr
+                                    *ngFor="let tempcust of customer | paginate: { itemsPerPage: count, currentPage: p }">
+                                    <td>{{tempcust.customerId}}</td>
+                                    <td>{{tempcust.customerName}}</td>
+                                    <td>{{tempcust.customerPhone}}</td>
+                                    <td>{{tempcust.username}}</td>
+                                    <td><button type="button" class="btn btn-md btn-danger"
+                                    (click)="deleteCustomer(tempcust.customerId)">Delete</button></td>
+
+                                </tr>
+                            </table>
+                            <div class="text-right mt-3">
+                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div> 
+        

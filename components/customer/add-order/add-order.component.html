@@ -1,0 +1,50 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+  <span><mat-icon>eco</mat-icon> Product</span>
+  <div class="spacer"></div>
+  <a mat-button routerLink="/customer/home">Home</a>
+  <a mat-button routerLink="/customer/myprofile">My Profile</a>
+  <a mat-button routerLink="/customer/product">Products</a>
+  <a mat-button routerLink="/customer/myorders">My Orders</a>
+  <a mat-button routerLink="/customer/mypayment">My Payments</a>
+  <a mat-raised-button color="accent" (click)="logout()">Logout</a>
+</mat-toolbar>
+<div style="background-image: url('assets/images/orderbg1.jpg'); background-size: cover;
+  background-position: center; background-repeat: no-repeat; display: flex; justify-content: center;
+  align-items: center; height: 91.3vh; overflow: hidden; background-attachment: fixed;">
+
+<div class="background-container">
+  <div class="main-content">
+    <div class="container-fluid">
+      <div class="content">
+        <div class="row">
+          <div class="col-md-5">
+            <!-- Image Section -->
+            <div class="image-container">
+              <img src="{{ product.img }}" alt="{{ product.pname }}" class="product-image">
+            </div>
+          </div>
+          <div class="col-md-7">
+            <!-- Product Details Section -->
+            <div class="product-details">
+              <h4 class="product-name"><strong>{{ product.pname }}</strong></h4>
+              <p class="product-price"><strong>{{ product.price }} ₹</strong></p>
+              <!-- Add productid and other details here -->
+              <form>
+                <div class="form-container">
+                  <div class="form-group">
+                    <label for="quantity"><strong>Quantity:</strong></label>
+                    <div class="input-container">
+                      <input type="number" id="quantity" name="quantity" class="form-control" [(ngModel)]="quantity" required min="1">
+                    </div>
+                  </div>
+                </div>
+              
+                <button type="button" class="order-button" (click)="placeOrder()">Buy now</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

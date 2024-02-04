@@ -1,0 +1,105 @@
+<section style="background-image: url('assets/images/addmenubg.jpg');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+height: 100vh ;
+
+background-attachment: fixed;">
+    <header>
+       
+        <h4 style="margin-left: 70%"></h4>
+        <div class="dp">
+
+            <img src="assets/images/Users.png" class="dpicn" alt="dp">
+
+        </div>
+    </header>
+    <div class="main-container">
+        <div class="navcontainer">
+            <nav class="nav">
+                <div class="nav-upper-options">
+                    <div class="nav-option option1">
+                        <a routerLink="/admin/home">
+                            
+                            <h3 style="margin-left: 20px">Dashboard</h3>
+                        </a>
+                    </div>
+                    <div class="option2 nav-option">
+                        <a routerLink="/admin/customer/viewcustomer">
+                            
+                            <h3 style="margin-left: 20px">Show Customer</h3>
+                        </a>
+                    </div>
+                    <div class="nav-option option3">
+                        <a routerLink="/admin/order/allorders">
+                           
+                            <h3 style="margin-left: 20px">Show Order</h3>
+                        </a>
+                    </div>
+                    
+                    <div class="nav-option option5">
+                        <a routerLink="/admin/product">
+                           
+                            <h3 style="margin-left: 20px">Show Product</h3>
+                        </a>
+                    </div>
+                    <div class="nav-option option6">
+                        <a (click)="logout()">
+                            <img src="assets/images/logout.png" class="nav-img" alt="institution">
+                            <h3 style="margin-left: 20px">Logout</h3>
+                        </a>
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+        <div class="main">
+            <div class="title-container">
+                <h3 style="font-family: cursive">All Payments</h3>
+            </div>
+            <div class="box-container">
+                
+                <div class="section-content section-content-p30">
+                    <div class="container-fluid">
+                        
+                        <div class="row">
+                          <table class='table'>
+                            <thead>
+                                <tr class='table-dark'>
+                                    <th class="center" style="font-family: cursive">PaymentId</th>
+                                    <th class="center" style="font-family: cursive">Payment Date</th>
+                                    <th class="center" style="font-family: cursive">NameOnCard</th>
+                                    <th class="center" style="font-family: cursive">OrderId</th>
+                                    <th class="center" style="font-family: cursive">Total Price</th>
+                                    <th class="center" style="font-family: cursive">Paid Amount</th>
+                                    <th class="center" style="font-family: cursive">Customer</th>
+                                    <th></th>
+                                   
+                                    
+                                    
+                                </tr>
+                        
+                            </thead>
+                            <tr *ngFor="let temppay of payment | paginate: { itemsPerPage: count, currentPage: p }">
+                                <td class="center">{{temppay.paymentId}}</td>
+                                <td class="center">{{temppay.paidDate}}</td>
+                                <td class="center">{{temppay.nameOnCard}}</td>
+                                <td class="center">{{temppay.orderId}}</td>
+                                <td class="center">{{temppay.totalPrice}}</td>  
+                                <td class="center">{{temppay.paidAmount}}</td>
+                                <td class="center">{{temppay.customer.customerName}}</td>
+                                <td class="center">
+                                    <button type="button" class="btn btn-md btn-danger" (click)="deleteOrder(temppay.paymentId)">Delete</button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="text-right" style="padding-top: 20px;">
+                            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                            </div>
+                              
+                        </div>    
+                        </div>
+                    </div>
+                </div>
+
+        </div>

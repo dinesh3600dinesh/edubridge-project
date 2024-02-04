@@ -1,0 +1,68 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<mat-toolbar color="#333"  class="mat-elevation-z8" style="margin-bottom: 10px;">
+   
+  
+   
+     <div class="spacer"></div>
+    <a mat-button style="margin-right: 15px;" routerLink="/customer/home">Home</a>
+    <a mat-button style="margin-right: 15px;" routerLink="/customer/myprofile">My Profile</a>
+    <a mat-button style="margin-right: 15px;" routerLink="/customer/product">Product</a>
+   
+    <a mat-button style="margin-right: 700px;" routerLink="/customer/mypayment">My Payments</a>
+    
+    <a mat-raised-button color="primary" (click)="logout()">Logout</a>
+   </mat-toolbar>
+   <div class="main-content" style="
+   
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+    height: 50vh;
+    overflow: hidden;
+
+  ">
+  
+   
+  
+
+<body>
+
+  <div class="section-container">
+    <div class="container">
+      <h2 style="color: #333;"class="text-center my-4" >My Orders</h2>
+      <div class="table-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>OrderID</th>
+              <th>Customer</th>
+              <th>Order Date</th>
+              <th>Order Time</th>
+              <th>Product Name</th>
+              <th>Quantity</th>
+              <th>Total Price</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let temporder of order | paginate: { itemsPerPage: count, currentPage: p }">
+              <td>{{ temporder.orderId }}</td>
+              <td>{{ temporder.customer.customerName }}</td>
+              <td>{{ temporder.orderDate }}</td>
+              <td>{{ temporder.orderTime }}</td>
+              <td>{{ temporder.product.pname }}</td>
+              <td>{{ temporder.quantity }}</td>
+              <td>{{ temporder.totalPrice }}</td>
+              <td>{{ temporder.status }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination-container">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
